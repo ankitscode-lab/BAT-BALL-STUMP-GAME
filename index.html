@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bat ball stump game</title>
+    <link rel="stylesheet" href="Style.css">
+    
+  </head>
+  <body>
+    <h1>🏏 Bat Ball Stump game 🏏</h1>
+    <button
+        onclick="
+        let choice = ComputerChoice();
+        let userChoice = 'bat' 
+        let x =FinalResult(userChoice , choice)
+        showResult (userChoice , choice , x) ">
+      <img src="assests/bat.png" alt="bat">
+    </button>
+
+
+
+
+
+    <button
+        onclick="
+        userChoice = 'ball'
+        choice = ComputerChoice();
+        x = FinalResult(userChoice , choice)
+        showResult (userChoice , choice , x)">
+      <img src="assests/ball.png" alt="ball">
+    </button>
+
+
+
+
+    <button
+          onclick="
+          choice = ComputerChoice();
+          userChoice = 'stump'
+          x = FinalResult(userChoice , choice)
+          showResult (userChoice , choice , x)">
+
+      <img src="assests/stump.png" alt="">
+    </button >
+    <button onclick="resetScore()">
+      <img src="assests/reset.png" alt="reset">
+    </button>
+    <h3 class="your-move"></h3>
+    <h3 class="comp-move"></h3>
+    <h1 class="result"></h1>
+    <h3 class="score"></h3>
+
+    <script>
+
+
+      let scoreStr = localStorage.getItem('SCOORE');
+      let total = scoreStr ? JSON.parse(scoreStr) : { win: 0, tie: 0, lost: 0 };
+      function resetScore() {
+      total = { win: 0, tie: 0, lost: 0 };  
+      localStorage.setItem('SCOORE', JSON.stringify(total)); 
+        document.querySelector('.your-move').innerHTML = '';
+        document.querySelector('.comp-move').innerHTML = '';
+        document.querySelector('.result').innerHTML = '';
+        document.querySelector('.score').innerHTML = `win: 0 tie: 0 lost: 0`;
+      }
+
+
+
+        function ComputerChoice () {
+            let comp = Math.random() * 3;
+            if(comp > 0  && comp <=1){
+                console.log('computer chooses bat')
+                return 'bat';
+            }
+            else if (comp > 1 && comp <= 2){
+                console.log('computer chooses ball')
+                return 'ball';
+            }
+            else{
+                console.log('computer chooses stump')
+                return 'stump';
+             } ;
+        }
+
+        function FinalResult(userChoice , choice){
+          if(userChoice === 'bat'){
+            if(choice === 'bat'){
+              total.tie++;
+              return 'The match is tie'
+            }
+            else if (choice === 'ball'){
+              total.win++;
+                return 'Wow!! you won'
+              }
+            else{
+                total.lost++;
+                return 'Sorry!! you loose'
+              }      
+          }
+          else if(userChoice === 'ball'){
+            if(choice == 'bat'){
+                total.lost++;
+                return 'Sorry!! you losee'
+            }
+            else if (choice == 'ball'){
+                total.tie++;
+                return 'The match is tie'
+            }
+            else{
+                total.win++;
+                return 'Wow!! you won'
+            }
+          }
+          else {
+             if(choice == 'bat'){
+                  total.win++;
+                  return 'Wow!! you won'
+              }
+              else if (choice == 'ball'){
+                  total.lost++;
+                  return 'Sorry!! you losee'
+              }
+              else{
+                  total.tie++;
+                  return 'The match is tie'
+              }
+
+          }
+        }
+
+
+        function showResult (userChoice , choice , FinalResult){
+          localStorage.setItem('SCOORE' , JSON.stringify(total))
+          document.querySelector('.your-move').innerHTML = `YOU HAVE CHOOSEN ${userChoice}` ;
+          document.querySelector('.comp-move').innerHTML = `COMPUTER CHOOSES ${choice}`
+          document.querySelector('.result').innerHTML = FinalResult ;
+          document.querySelector('.score').innerHTML = `won  : ${total.win} |  tie : ${total.tie}  |  lost : ${total.lost}` ;
+           
+           
+           
+        }
+
+       
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Russo+One&display=swap');
+
+      body {
+        text-align: center;
+        background-image: url(assests/stadium-night-with-lights-crowd-people.jpg);
+        background-size: cover;
+      }
+      h1{
+        font-family:"Russo One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: lightgrey;
+      }
+      img{
+        height: 100px;
+      }
+      button{
+        width: 150px;
+        margin: 20px;
+        height: 150px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.3s ease ,filter 0.2s ease;
+         background-color: rgba(255, 255, 255, 0.3);
+         backdrop-filter: blur(2px);
+      }
+      button:hover{
+        transform: scale(1.1);
+        filter: brightness(1.2);
+      }
+      h3{
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 30px;
+      }
+      .score{
+        display: inline;
+        background-color: white;
+        margin-left: 8px;
+        word-spacing: 20px;
+        border: 2px solid transparent;
+        border-radius: 12px;
+      }
+     
+      .comp-move{
+        
+        color: black
+      }
+      .result{
+        color: white;
+        display: inline-block;
+        background-color: goldenrod;
+        border: 2px solid transparent;
+        border-radius: 12px;
+      }
